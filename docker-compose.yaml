@@ -1,0 +1,10 @@
+services:
+  base-service:
+    image: alpine:latest
+    command: sleep infinity
+
+  test-service:
+    image: alpine:latest
+    command: sh -c "exit 0"
+    depends_on:
+      - base-service
