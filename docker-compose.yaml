@@ -3,8 +3,10 @@ services:
     image: alpine:latest
     command: sleep infinity
 
-  test-service:
+  init-watcher:
     image: alpine:latest
-    command: sh -c "exit 0"
+    command: sh -c "sleep ${WAIT_TIME:-0}"
+    environment:
+      - WAIT_TIME=${WAIT_TIME:-0}
     depends_on:
       - base-service
